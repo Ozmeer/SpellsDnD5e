@@ -569,11 +569,43 @@ Vue.component('card', {
 		let styleContainer = window.getComputedStyle(oContainer, null).getPropertyValue('width');
 		this.cardWidth= parseFloat(styleContainer);
 	/* ================================================================== */
-		const str = this.className.split(" ").map(e => {
-
-
+		/*const str = this.className.split(" ").map(e => {
 			return `<div class="icon ${e}"></div>`;
-		}).join(" ");
+		}).join(" ");*/
+
+		let s = this.school; //.split(" ").map(e => {
+
+			switch (s) {
+				case "вызов":
+					s = "conjuration";
+					break;
+				case "ограждение":
+					s = "abjuration";
+					break;
+				case "некромантия":
+					s = "necromancy";
+					break;
+				case "воплощение":
+					s = "evocation";
+					break;
+				case "очарование":
+					s = "enchantment";
+					break;
+				case "преобразование":
+					s = "transmutation";
+					break;
+				case "иллюзия":
+					s = "illusion";
+					break;
+				case "прорицание":
+					s = "divination";
+					break;
+				default:
+					break;
+			}
+		const str = `<div class="${s}"></div>`;
+		//}).join(" ");
+
 		if (this.$refs.wholeCardBack) {
 			this.$refs.wholeCardBack.innerHTML = str + this.$refs.wholeCardBack.innerHTML;
 			this.$refs.wholeCardBackSec.innerHTML = str + this.$refs.wholeCardBackSec.innerHTML;
@@ -687,12 +719,12 @@ Vue.component('card', {
      		<div class="cardBack" ref="wholeCardBack">
      			<!--div class="cornerTopLeft"> </div>
      			<div class="cornerBottomRight"> </div-->
-     			<div class="level left">{{level}}</div>
-     			<div class="level right">{{level}}</div>
+     			<!--div class="level left">{{level}}</div>
+     			<div class="level right">{{level}}</div-->
      		</div>
      		<div class="cardBack second" ref="wholeCardBackSec">
-     			<div class="level left">{{level}}</div>
-     			<div class="level right">{{level}}</div>
+     			<!--div class="level left">{{level}}</div>
+     			<div class="level right">{{level}}</div-->
      		</div>
 
      		<div class="container" ref="wholeCardContainer">
@@ -893,7 +925,7 @@ Vue.component('hiddenitem', {
 
 		computed: {
 			sOtherLang: function(){
-				return (this.sLang=="ru")? "en": "ru";
+				return "ru"; //(this.sLang=="ru")? "en": "ru"
 			},
 			aSrcList: function(){
 				let a=[];
@@ -902,7 +934,7 @@ Vue.component('hiddenitem', {
 						a.push({
 							key: key,
 							//title: this.aSources[key].text.en.title + "<br>" + this.aSources[key].text.ru.title,
-							title: this.aSources[key].text.ru.title,
+							title: this.aSources[key].text.en.title + " (" + key + ")",
 							checked: this.aSources[key].checked
 						});
 					}

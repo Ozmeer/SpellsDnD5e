@@ -1420,10 +1420,11 @@ p {
   background-repeat: no-repeat;
   color: #000;
   outline: 5px solid #999;
+  background-color: white;
   border-radius: 5px;
   position: relative;
-  padding: 0px 15px;
-  padding-top: 53px;
+  /*padding: 0px 15px;
+  padding-top: 53px;*/
   text-align: center;
 }
 .spellCard .cardBack.second {
@@ -1474,40 +1475,121 @@ p {
   margin-bottom: 2px;
 }
 .spellCard .cardBack .icon.artificer {
-  background: url("../img/classes/artificer.png");
+  background: url("../img/old/classes/artificer.png");
   box-shadow: 0 0 0 5px #5c9699;
 }
 .spellCard .cardBack .icon.bard {
-  background-image: url("../img/classes/bard.png");
+  background-image: url("../img/old/classes/bard.png");
   box-shadow: 0 0 0 5px #f14c85;
 }
 .spellCard .cardBack .icon.cleric {
-  background-image: url("../img/classes/cleric.png");
+  background-image: url("../img/old/classes/cleric.png");
   box-shadow: 0 0 0 5px #FDD835;
 }
 .spellCard .cardBack .icon.druid {
-  background-image: url("../img/classes/druid.png");
+  background-image: url("../img/old/classes/druid.png");
   box-shadow: 0 0 0 5px #795548;
 }
 .spellCard .cardBack .icon.paladin {
-  background-image: url("../img/classes/paladin.png");
+  background-image: url("../img/old/classes/paladin.png");
   box-shadow: 0 0 0 5px #ff9800;
 }
 .spellCard .cardBack .icon.ranger {
-  background-image: url("../img/classes/ranger.png");
+  background-image: url("../img/old/classes/ranger.png");
   box-shadow: 0 0 0 5px #4caf50;
 }
 .spellCard .cardBack .icon.sorcerer {
-  background-image: url("../img/classes/sorcerer.png");
+  background-image: url("../img/old/classes/sorcerer.png");
   box-shadow: 0 0 0 5px #0289ec;
 }
 .spellCard .cardBack .icon.warlock {
-  background-image: url("../img/classes/warlock.png");
+  background-image: url("../img/old/classes/warlock.png");
   box-shadow: 0 0 0 5px #673ab7;
 }
 .spellCard .cardBack .icon.wizard {
-  background-image: url("../img/classes/wizard.png");
+  background-image: url("../img/old/classes/wizard.png");
   box-shadow: 0 0 0 5px #f32719;
+}
+
+.spellCard .cardBack .conjuration {
+  height: 100%;
+  width: 230px;
+  background-repeat: no-repeat;
+  background-position: 50% 80%;
+  display: inline-block;
+  background-image: url("../img/schools/conjuration white.png");
+  background-size: 94%;
+  /*box-shadow: 0 0 0 5px #5c9699;*/
+}
+.spellCard .cardBack .abjuration {
+  height: 100%;
+  width: 230px;
+  background-repeat: no-repeat;
+  background-position: 50% 80%;
+  display: inline-block;
+  background-image: url("../img/schools/abjuration.png");
+  background-size: 94%;
+  /*box-shadow: 0 0 0 5px #5c9699;*/
+}
+.spellCard .cardBack .necromancy {
+  height: 100%;
+  width: 230px;
+  background-repeat: no-repeat;
+  background-position: 50% 80%;
+  display: inline-block;
+  background-image: url("../img/schools/necromancy.png");
+  background-size: 94%;
+  /*box-shadow: 0 0 0 5px #795548;*/
+}
+.spellCard .cardBack .evocation {
+  height: 100%;
+  width: 230px;
+  background-repeat: no-repeat;
+  background-position: 50% 80%;
+  display: inline-block;
+  background-image: url("../img/schools/evocation.png");
+  background-size: 94%;
+  /*box-shadow: 0 0 0 5px #ff9800;*/
+}
+.spellCard .cardBack .enchantment {
+  height: 100%;
+  width: 230px;
+  background-repeat: no-repeat;
+  background-position: 50% 80%;
+  display: inline-block;
+  background-image: url("../img/schools/enchantment.png");
+  background-size: 94%;
+  /*box-shadow: 0 0 0 5px #f14c85;*/
+}
+.spellCard .cardBack .transmutation {
+  height: 100%;
+  width: 230px;
+  background-repeat: no-repeat;
+  background-position: 50% 80%;
+  display: inline-block;
+  background-image: url("../img/schools/transmutation.png");
+  background-size: 94%;
+  /*box-shadow: 0 0 0 5px #4caf50;*/
+}
+.spellCard .cardBack .illusion {
+  height: 100%;
+  width: 230px;
+  background-repeat: no-repeat;
+  background-position: 50% 80%;
+  display: inline-block;
+  background-image: url("../img/schools/illusion.png");
+  background-size: 94%;
+  /*box-shadow: 0 0 0 5px #0289ec;*/
+}
+.spellCard .cardBack .divination {
+  height: 100%;
+  width: 230px;
+  background-repeat: no-repeat;
+  background-position: 50% 80%;
+  display: inline-block;
+  background-image: url("../img/schools/divination.png");
+  background-size: 94%;
+  /*box-shadow: 0 0 0 5px #FDD835;*/
 }
 
 .spellCard .cardBack .icon.t {

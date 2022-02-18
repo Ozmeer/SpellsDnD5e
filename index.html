@@ -1,297 +1,297 @@
 <!doctype html>
 <html>
 <head>
-  <title>Заклинания D&D5</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" type="text/css" href="./spells/css/style.css?v=0.11">
-  <meta name="description" content="Заклинания D&D5">
-  <link href="./fonts/FortAwesome/css/font-awesome.min.css" rel="stylesheet">
-  <!--link rel="shortcut icon" href="favicon.ico" /-->
-  <link rel="canonical" href="https://tentaculus.ru/spells" />
-  <!--meta property="og:image" content="img/bg2.jpg" />
-  <meta property="og:image" content="img/og.jpg" /-->
-  <meta property="og:title" content="Заклинания D&D5" />
-  <meta property="og:description" content="Карточки заклинаний на русском" />
-    <!-- IE must understand HTML5: -->
-  <!--[if IE]>
-   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <!--[if lt IE 9]>
-    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-  <![endif]-->
-  <style>
-   article, aside, details, figcaption, figure, footer,header,
-   hgroup, menu, nav, section, div { display: block; }
-  </style>
+	<title>Заклинания D&D5</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="./spells/css/style.css?v=0.11">
+	<meta name="description" content="Заклинания D&D5">
+	<link href="./fonts/FortAwesome/css/font-awesome.min.css" rel="stylesheet">
+	<!--link rel="shortcut icon" href="favicon.ico" /-->
+	<link rel="canonical" href="https://tentaculus.ru/spells" />
+	<!--meta property="og:image" content="img/bg2.jpg" />
+    <meta property="og:image" content="img/og.jpg" /-->
+	<meta property="og:title" content="Заклинания D&D5" />
+	<meta property="og:description" content="Карточки заклинаний на русском" />
+	<!-- IE must understand HTML5: -->
+	<!--[if IE]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+	<style>
+		article, aside, details, figcaption, figure, footer,header,
+		hgroup, menu, nav, section, div { display: block; }
+	</style>
 </head>
 <body>
 
 <div class='wrap'  id='app'>
 	<div class='p_side'  v-cloak>
 		<div class="mediaWidth flexParent">
-			<!--a href="/" class="bt flexChild" title="На главную страницу"><i class="fa fa-home"></i></a>
-			<a href="#" class="bt flexChild" id="bInfo" title="Справка" @click="showInfo"><i class="fa fa-question-circle"></i></a-->
+			<!--a href="/" class="bt flexChild" title="На главную страницу"><i class="fa fa-home"></i></a-->
+			<a href="#" class="bt flexChild" id="bInfo" title="Справка" @click="showInfo"><i class="fa fa-question-circle"></i></a>
 			<a href="#" class="bt flexChild" id="bPrint" title="Распечатать" @click="print"><i class="fa fa-print" aria-hidden="true"></i></a>
 		</div>
 		<div class='mediaWidth'>
 			<searchfield
-				id="NameInput"
-				title="Название"
-				:value="sSearch"
-				:ios="bIos"
-				@input="onSearchName"
-				@searchrndom="getRandomItem"
+					id="NameInput"
+					title="Название"
+					:value="sSearch"
+					:ios="bIos"
+					@input="onSearchName"
+					@searchrndom="getRandomItem"
 			>
 			</searchfield>
 		</div>
-		<div class='mediaWidth'>				
+		<div class='mediaWidth'>
 			<custom-select
-				id="ClassSelect"
-				ref="ClassSelect"
-				title="Класс"
-				:selected="sClassSelected"
-				:items="aClassList"
-				@iclick="onClassChange($event)"
+					id="ClassSelect"
+					ref="ClassSelect"
+					title="Класс"
+					:selected="sClassSelected"
+					:items="aClassList"
+					@iclick="onClassChange($event)"
 			>
 			</custom-select>
 		</div>
-		<div class='mediaWidth' v-show='aSubClassList.length>1'>				
+		<div class='mediaWidth' v-show='aSubClassList.length>1'>
 			<custom-select
-				id="SubClassSelect"
-				ref="SubClassSelect"
-				:selected="sSubClassSelected"
-				:items="aSubClassList"
-				@iclick="onSubClassChange($event)"
+					id="SubClassSelect"
+					ref="SubClassSelect"
+					:selected="sSubClassSelected"
+					:items="aSubClassList"
+					@iclick="onSubClassChange($event)"
 			>
 			</custom-select>
 		</div>
-		<div class='mediaWidth' v-show='aSubSubClassList.length>1'>				
+		<div class='mediaWidth' v-show='aSubSubClassList.length>1'>
 			<custom-select
-				id="SubSubClassSelect"
-				ref="SubSubClassSelect"
-				:selected="sSubSubClassSelected"
-				:items="aSubSubClassList"
-				@iclick="onSubSubClassChange($event)"
+					id="SubSubClassSelect"
+					ref="SubSubClassSelect"
+					:selected="sSubSubClassSelected"
+					:items="aSubSubClassList"
+					@iclick="onSubSubClassChange($event)"
 			>
 			</custom-select>
 		</div>
 
-		
+
 		<div class='mediaWidth' v-show='aSubClassList.length>1'>
 			<check-button
-				id="RitualCheckbox"
-				title="Все заклинания класса"
-				tooltip="Все заклинания из этого справочника, которые могут  применять представители класса, включая все архетпы"
-				:checked="bAllClassSpells"
-				@press="onAllClassSpellsPress"
+					id="RitualCheckbox"
+					title="Все заклинания класса"
+					tooltip="Все заклинания из этого справочника, которые могут  применять представители класса, включая все архетпы"
+					:checked="bAllClassSpells"
+					@press="onAllClassSpellsPress"
 			>
 			</check-button>
 		</div>
 
-		<div class='mediaWidth'>	
+		<div class='mediaWidth'>
 			<label class='filterLabel'>Уровень с/по</label>
 			<div class="row">
 				<div class="cell">
 					<custom-select
-						id="LevelSelectStart"
-						ref="LevelSelectStart"
-						:selected="sLevelStartSelected"
-						:items="aLevelList"
-						@iclick="onLevelStartChange($event)"
-					>
-					</custom-select>	
-				</div>		
-				<div class="cell">
-					<custom-select
-						id="LevelSelectEnd"
-						ref="LevelSelectEnd"
-						:selected="sLevelEndSelected"
-						:items="aLevelList"
-						@iclick="onLevelEndChange($event)"
+							id="LevelSelectStart"
+							ref="LevelSelectStart"
+							:selected="sLevelStartSelected"
+							:items="aLevelList"
+							@iclick="onLevelStartChange($event)"
 					>
 					</custom-select>
-				</div>	
+				</div>
+				<div class="cell">
+					<custom-select
+							id="LevelSelectEnd"
+							ref="LevelSelectEnd"
+							:selected="sLevelEndSelected"
+							:items="aLevelList"
+							@iclick="onLevelEndChange($event)"
+					>
+					</custom-select>
+				</div>
 			</div>
 		</div>
-		
+
 		<div class='mediaWidth'>
 			<combobox
-				id="SchoolCombobox"
-				ref="SchoolCombobox"
-				title="Школы"
-				:items="aSchoolList"
-				:opened="bSchoolsOpend"
-				@iclick="onSchoolChange($event)"
-				@opened="onSchoolsToggled($event)"
+					id="SchoolCombobox"
+					ref="SchoolCombobox"
+					title="Школы"
+					:items="aSchoolList"
+					:opened="bSchoolsOpend"
+					@iclick="onSchoolChange($event)"
+					@opened="onSchoolsToggled($event)"
 			>
 			</combobox>
 		</div>
 		<div class='mediaWidth'>
 			<combobox
-				id="SourceCombobox"
-				ref="SourceCombobox"
-				title="Источники"
-				:items="aSrcList"
-				:opened="bSourcesOpend"
-				@iclick="onSourceChange($event)"
-				@opened="onSourcesToggled($event)"
+					id="SourceCombobox"
+					ref="SourceCombobox"
+					title="Источники"
+					:items="aSrcList"
+					:opened="bSourcesOpend"
+					@iclick="onSourceChange($event)"
+					@opened="onSourcesToggled($event)"
 			>
 			</combobox>
 		</div>
 		<div class='mediaWidth'>
 			<combobox
-				id="CastingTimeCombobox"
-				ref="CastingTimeCombobox"
-				title="КАСТ"
-				:items="aCastingTimeList"
-				:opened="bCastingTimeOpend"
-				@iclick="onCastingTimeChange($event)"
-				@opened="onCastingTimeToggled($event)"
+					id="CastingTimeCombobox"
+					ref="CastingTimeCombobox"
+					title="КАСТ"
+					:items="aCastingTimeList"
+					:opened="bCastingTimeOpend"
+					@iclick="onCastingTimeChange($event)"
+					@opened="onCastingTimeToggled($event)"
 			>
 			</combobox>
 		</div>
 		<div class='mediaWidth'>
 			<check-button
-				id="RitualCheckbox"
-				title="Ритуальные заклинания"
-				:checked="bRitualOnly"
-				@press="onRitualsPress"
+					id="RitualCheckbox"
+					title="Ритуальные заклинания"
+					:checked="bRitualOnly"
+					@press="onRitualsPress"
 			>
 			</check-button>
 		</div>
-			
-			<div class='mediaWidth' style="display: none;">
-				<label class='filterLabel'>Ширина карточек</label>
-				<div class="flexParent">
-	
-						<button 
-							class='bt flexChild'
-							title='Уменьшить ширину карточек'
-							@click='makeCardWidthLess'
-							>
-							<i class="fa fa-caret-right" aria-hidden="true"></i> <i class="fa fa-caret-left" aria-hidden="true"></i>
-						</button>
-					
-						<button 
-							class='bt flexChild'
-							title='Сбросить ширину карточек'
-							@click='makeCardWidthNorm'
-							>
-							<i class="fa fa-square-o" aria-hidden="true"></i>
-						</button>
-						
-						<button 
-							class='bt flexChild'
-							title='Увеличить ширину карточек'
-							@click='makeCardWidthMore'
-							>
-							<i class="fa fa-caret-left" aria-hidden="true"></i> <i class="fa fa-caret-right" aria-hidden="true"></i>
-						</button>
-					
-				</div>
+
+		<div class='mediaWidth' style="display: none;">
+			<label class='filterLabel'>Ширина карточек</label>
+			<div class="flexParent">
+
+				<button
+						class='bt flexChild'
+						title='Уменьшить ширину карточек'
+						@click='makeCardWidthLess'
+				>
+					<i class="fa fa-caret-right" aria-hidden="true"></i> <i class="fa fa-caret-left" aria-hidden="true"></i>
+				</button>
+
+				<button
+						class='bt flexChild'
+						title='Сбросить ширину карточек'
+						@click='makeCardWidthNorm'
+				>
+					<i class="fa fa-square-o" aria-hidden="true"></i>
+				</button>
+
+				<button
+						class='bt flexChild'
+						title='Увеличить ширину карточек'
+						@click='makeCardWidthMore'
+				>
+					<i class="fa fa-caret-left" aria-hidden="true"></i> <i class="fa fa-caret-right" aria-hidden="true"></i>
+				</button>
+
 			</div>
-			
-			<div class='mediaWidth' style="display: none;">
-				<div class="flexParent">
-					<button
+		</div>
+
+		<div class='mediaWidth' style="display: none;">
+			<div class="flexParent">
+				<button
 						class="bt flexChild"
-						style="    padding: 0.6em; margin: 0;"						
+						style="    padding: 0.6em; margin: 0;"
 						@click="autosizeAllText"
-						>
-						Подстроить текст
-					</button>
-				</div>
+				>
+					Подстроить текст
+				</button>
 			</div>
-			
-			<div class='mediaWidth'>
-				<custom-select
+		</div>
+
+		<div class='mediaWidth'>
+			<custom-select
 					id="SortSelect"
 					ref="SortSelect"
 					title="Сортировка"
 					:selected="sSortSelected"
 					:items="aSortList"
 					@iclick="onSortChange($event)"
-				>
-				</custom-select>
-			</div>
-			
-			<div class='mediaWidth' style="display: none;">
-				<custom-select
+			>
+			</custom-select>
+		</div>
+
+		<div class='mediaWidth' style="display: none;">
+			<custom-select
 					id="LangSelect"
 					ref="LangSelect"
 					title="Язык"
 					:selected="sLangSelected"
 					:items="aLanguageList"
 					@iclick="onLanguageChange($event)"
-				>
-				</custom-select>
-			</div>
-			<div class='mediaWidth' style="display: none;">
-				<custom-select
+			>
+			</custom-select>
+		</div>
+		<div class='mediaWidth' style="display: none;">
+			<custom-select
 					id="ViewSelect"
 					ref="ViewSelect"
 					title="Вид"
 					:selected="sViewSelected"
 					:items="aViewList"
 					@iclick="onViewChange($event)"
-				>
-				</custom-select>
-			</div>
-			<!--
-		<div class='mediaWidth'>
-			<label></lable>
+			>
+			</custom-select>
 		</div>
-		-->
+		<!--
+    <div class='mediaWidth'>
+        <label></lable>
+    </div>
+    -->
 		<hr>
 		<div class='mediaWidth'>
 			<button class="btn"
-				title="Скачать базу данных в формате JSON"
-				@click="downloadDB"
+					title="Скачать базу данных в формате JSON"
+					@click="downloadDB"
 			>Скачать</button>
 		</div>
 		<div class='mediaWidth'>
 			<input type="file" style="display: none" ref="fileUploader" id="fileUploader" @change="fileSelected">
 			<button  class="btn"
-				title="Загрузить базу данных в формате JSON"
-				@click="uploadDB">
+					 title="Загрузить базу данных в формате JSON"
+					 @click="uploadDB">
 				Загрузить</button>
 		</div>
 
 		<div class='mediaWidth' style="display: none;">
 			<check-button
-				id="EditorCheckbox"
-				title="Редактирование"
-				:checked="bEditMode"
-				@press="onEditModePress"
+					id="EditorCheckbox"
+					title="Редактирование"
+					:checked="bEditMode"
+					@press="onEditModePress"
 			>
 			</check-button>
 		</div>
-		
-			
+
+
 		<div class='mediaWidth' v-show="aHiddenItemsList.length>0">
 			<label class="filterLabel">Скрытые заклинания ({{aHiddenItemsList.length}})</label>
 			<div id="HiddenItems">
 				<a href='#' class='bReturnUnvisible' @click.stop="unhideAll">Вернуть все обратно</a>
-				<hiddenitem 
-					v-for="item in aHiddenItemsList"
-					:key="item.id"
-					:id="item.id"
-					:title="item.title"
-					:tooltip="item.tooltip"
-					@unhide="unhideCard(item.id)"
+				<hiddenitem
+						v-for="item in aHiddenItemsList"
+						:key="item.id"
+						:id="item.id"
+						:title="item.title"
+						:tooltip="item.tooltip"
+						@unhide="unhideCard(item.id)"
 				>
 				</hiddenitem>
-			</custom-select>
+				</custom-select>
 			</div>
 		</div>
 
 		<div class='mediaWidth'>
 			<check-button
-				id="CardBackCheckbox"
-				title="Вкл/Выкл Рубашки"
-				:checked="bToogleCardBack"
-				@press="onToogleCardBackPress" >
+					id="CardBackCheckbox"
+					title="Вкл/Выкл Рубашки"
+					:checked="bToogleCardBack"
+					@press="onToogleCardBackPress" >
 			</check-button>
 		</div>
 
@@ -299,6 +299,7 @@
 		<br>
 		<br>
 		<div style="font-size: 13px;">
+
 			<p style="font-weight: bolder; font-size: 15px;">Благодарности:</p>
 			<p>Инструмент основан на <a style="color: #42c1ff; font-weight: bold;" href="https://tentaculus.ru/spells/index.html" target="_blanc">Справочнике заклинаний DnD5 от Dr.Tentaculus</a></p>
 			<hr>
@@ -306,10 +307,10 @@
 			<hr>
 			<p>Данные по заклинаниям взяты <a style="color: #42c1ff; font-weight: bold;"  href="https://dnd.su/spells/" target="_blanc">с сайта DnD.su</a></p>
 			<hr>
-			<p>Отдельное спасибо <strong>@RoyalGuardian</strong> за помощь и советы по frontend разработке</p>
+			<p>Отдельное спасибо <strong style="color: #42c1ff;">@Neythalion</strong> за помощь и советы по frontend разработке</p>
 		</div>
 	</div>
-	
+
 	<div class='p_cont' ref="cardContainer">
 		<div id='lockedItemsArea' v-show="aLockedItemsList.length>0 && bCardsAreVisible"  v-cloak>
 			<div class='flex_row noprint'>
@@ -318,7 +319,49 @@
 			</div>
 			<div class='content row'>
 				<card
-					v-for="item in aLockedItemsList"
+						v-for="item in aLockedItemsList"
+						ref="itemCard"
+						:key="item.name"
+						:id="item.id"
+						:name="item.name"
+						:tooltip="item.tooltip"
+						:text="item.text"
+						:src="item.src"
+						:class-name="item.className"
+						:source="item.source"
+						:school="item.school"
+						:level="item.level"
+						:duration="item.duration"
+						:casting-time="item.castingTime"
+						:range="item.range"
+						:materials="item.materials"
+						:ritual="item.ritual"
+						:components="item.components"
+						:casting-Time-Title="item.castingTimeTitle"
+						:duration-Title="item.durationTitle"
+						:range-Title="item.rangeTitle"
+						:components-Title="item.componentsTitle"
+						:color="item.color"
+						:view="sView"
+						:selected="item.selected"
+						:locked="item.locked"
+						:pre="item.pre"
+						:editable="item.editable"
+						@unlock="unlockCard(item)"
+						@hide="hideCard(item)"
+						@select="selectLockedCard(item)"
+				>
+				</card>
+			</div>
+			<div class='flex_row noprint'>
+				<span class='bottomHeader'>Каталог заклинаний ({{aItemsList.length}})</span>
+			</div>
+		</div>
+		<!--span id='before_spells'><div class='loader'></div>Читаем заклинания...</span-->
+		<div class="row spellContainer" :class="{noprint: aLockedItemsList.length>0}" :data-itemcount="aItemsList.length" v-show="bCardsAreVisible">
+			<!--span class='itemCounter noprint' v-show="aLockedItemsList.length<1"  v-cloak title='Количество элементов'>{{aItemsList.length}}</span-->
+			<card
+					v-for="item in aItemsList"
 					ref="itemCard"
 					:key="item.name"
 					:id="item.id"
@@ -343,88 +386,53 @@
 					:color="item.color"
 					:view="sView"
 					:selected="item.selected"
-					:locked="item.locked"
 					:pre="item.pre"
 					:editable="item.editable"
-					@unlock="unlockCard(item)"
+					@lock="lockCard(item)"
 					@hide="hideCard(item)"
-					@select="selectLockedCard(item)"
-				>
-				</card>
-			</div>
-			<div class='flex_row noprint'>
-				<span class='bottomHeader'>Каталог заклинаний ({{aItemsList.length}})</span>
-			</div>
-		</div>
-		<!--span id='before_spells'><div class='loader'></div>Читаем заклинания...</span-->
-		<div class="row spellContainer" :class="{noprint: aLockedItemsList.length>0}" :data-itemcount="aItemsList.length" v-show="bCardsAreVisible">
-			<!--span class='itemCounter noprint' v-show="aLockedItemsList.length<1"  v-cloak title='Количество элементов'>{{aItemsList.length}}</span-->
-			<card
-				v-for="item in aItemsList"
-				ref="itemCard"
-				:key="item.name"
-				:id="item.id"
-				:name="item.name"
-				:tooltip="item.tooltip"
-				:text="item.text"
-				:src="item.src"
-				:class-name="item.className"
-				:source="item.source"
-				:school="item.school"
-				:level="item.level"
-				:duration="item.duration"
-				:casting-time="item.castingTime"
-				:range="item.range"
-				:materials="item.materials"
-				:ritual="item.ritual"
-				:components="item.components"
-				:casting-Time-Title="item.castingTimeTitle"
-				:duration-Title="item.durationTitle"
-				:range-Title="item.rangeTitle"
-				:components-Title="item.componentsTitle"
-				:color="item.color"
-				:view="sView"
-				:selected="item.selected"
-				:pre="item.pre"
-				:editable="item.editable"
-				@lock="lockCard(item)"
-				@hide="hideCard(item)"
-				@select="selectCard(item)"
-				@cancel="cancelCard"
-				@input="saveCard"
+					@select="selectCard(item)"
+					@cancel="cancelCard"
+					@input="saveCard"
 			>
 			</card>
 		</div>
-		
-		<!-- div id='info_text'>
+
+		<div id='info_text'>
 			<h1>Заклинания D&D5</h1>
 			<h2>
 				Что есть
 			</h2>
 			<p>
-				Список заклинаний из Players Handbook D&D5 на русском и английском языках. Заклинания Барда (Bard), Клерика (Cleric), Друида (Druid), Рейнджера (Ranger), Паладина (Paladin), Чародея (Sorcerer), Колдуна (Warlock), Волшебника (Wizard) из Players Handbook, Dungeon Master Manual, Temple of Elemental Evil и Sword Coast Adventurers Guide с заклинаниями разных архетипов классов.
+				Список заклинаний D&D5 на русском языкe.<br>Заклинания классов:<br>Бард (Bard), Жрец (Cleric), Друид (Druid), Следопыт (Ranger), Паладин (Paladin), Чародей (Sorcerer), Колдун (Warlock), Волшебник (Wizard), Изобретатель (Artificer) и их архетипы.<br><br>Из разных источников:<br>Player's handbook, Lost Laboratory of Kwalish, Sword Coast Adventurer's Guide, Explorer's Guide to Wildemount, Xanathar's Guide to Everything, Acquisition Incorporated, Strixhaven: A Curriculum of Chaos, Princes of the Apocalypse, Fizban's Treasury of Dragons, Tasha's Cauldron of Everything, Guildmasters' guide to Ravnica, Icewind Dale: Rime of the Frostmaiden.
 			</p>
 			<p>
 				Заклинания можно фильтровать по:
-				<ul>
-				  <li>названию</li>
-				  <li>классам</li>
-				  <li>уровням</li>
-				  <li>школам</li>
-				  <li>языкам</li>
-				</ul>
+			<ul>
+				<li>названию (в т.ч. на английском)</li>
+				<li>классам</li>
+				<li>уровням</li>
+				<li>школам</li>
+				<li>касту (времени наложения)</li>
+				<li>ритуальности</li>
+			</ul>
 			</p>
 			<h2>
 				Скрытие заклинаний
 			</h2>
 			<p>
-				Карточку заклинаний можно скрыть из общего списка, если нажать на <i class="fa fa-eye-slash" aria-hidden="true"></i> в правом верхнем углу карточки. В таком случае заклинание исчезнет из общего списка и его название будет отображаться в самом низу панели фильтров. Если нажать на название, заклинание вернется в общий список.
+				Карточку заклинаний можно скрыть из общего списка, если нажать на <i class="fa fa-eye-slash" aria-hidden="true"></i> в правом нижнем углу карточки. В таком случае заклинание исчезнет из общего списка и его название будет отображаться в самом низу панели фильтров. Если нажать на название, заклинание вернется в общий список.
 			</p>
 			<h2>
 				Закрепление заклинаний
 			</h2>
 			<p>
-				Карточки заклинаний можно закреплять - в таком случае они будут отображаться в самом верху списка заклинаний. Для закрепления нужно нажать на <i class="fa fa-lock" aria-hidden="true"></i> в левом верхнем углу карточки заклинаний. Можно закреплять карточки заклинаний разных классов. При закреплении заклинания, оно не исчезает из общего списка. Если нажать на заголовок "Закрепленные заклинания", закрепленные карточки скроются (чтобы не мешать). На закрепленные заклинания не действуют никакие фильтры.
+				Карточки заклинаний можно закреплять - в таком случае они будут отображаться в самом верху списка заклинаний. Для закрепления нужно нажать на <i class="fa fa-lock" aria-hidden="true"></i> в левом нижнем углу карточки заклинаний. Можно закреплять карточки заклинаний разных классов. При закреплении заклинания, оно не исчезает из общего списка. Если нажать на заголовок "Закрепленные заклинания", закрепленные карточки скроются (чтобы не мешать). На закрепленные заклинания не действуют никакие фильтры.
+			</p>
+			<h2>
+				Изменить размер текста описания заклинаний
+			</h2>
+			<p>
+				Размер шрифта у текста заклинаний можно увеличить, нажав на <b class ="textMax" aria-hidden="true">+</b> в правом нижнем углу карточки или уменить при нажатии на <b class ="textMin" aria-hidden="true">-</b>.
 			</p>
 
 			<h2>
@@ -435,12 +443,10 @@
 			</p>
 			<p>
 				Когда карточки выделены, массово можно делать следующее:
-				<ul>
-					<li>Менять размер шрифта текста заклинаний. Размер шрифта у всех будет такой, как на карточке, на которой нажимается Плюс или Минус, для изменения размера шрифта.</li>
-					<li>Менять ширину карточек. Кнопки в меню будут менять размер только у выделенных карточек, либо у всех, если выделенных нет.</li>
-					<li>Закреплять/Откреплять карточки. При клике на иконке замка <i class="fa fa-lock" aria-hidden="true"></i> на любой из карточек будут закреплены все выделенные. Аналогично при откреплении закрепленных карточек. </li>
-					<li>Прятать карточки. При клике на иконке глаза <i class="fa fa-eye-slash" aria-hidden="true"></i> на любой из карточек будут скрыты  все выделенные. </li>
-				</ul>
+			<ul>
+				<li>Закреплять/Откреплять карточки. При клике на иконке замка <i class="fa fa-lock" aria-hidden="true"></i> на любой из карточек будут закреплены все выделенные. Аналогично при откреплении закрепленных карточек. </li>
+				<li>Прятать карточки. При клике на иконке глаза <i class="fa fa-eye-slash" aria-hidden="true"></i> на любой из карточек будут скрыты  все выделенные. </li>
+			</ul>
 			</p>
 
 			<div v-show="bAppIsReady">
@@ -459,48 +465,54 @@
 			<p>
 				Если есть закрепленные заклиннаия, то печататься будут только они.<br>
 				Если вы хотите распечатать заклинания, лучше всего делать это через Chrome (удобные настройки печати). Для этого надо:
-					<ul>
-						<li>нажать сочетание клавиш [Ctrl]+[P]</li>
-					</ul>
-					И, если все устраивает, нажать кнопку "Печать", либо:
-					<ul>
-						<li>в появившемся окне нажать "Дополнительные настройки"</li>
-						<li>выбрать поля "Персонализированные"</li>
-						<li>перетянуть мышкой поля так, чтобы карточки нормально распределились по листу <small>(помните, что обычно принтер печатает с полями, если сделать поля слишком маленькие, при печати часть карточек может обрезаться)</small></li>
-
-					</ul>
+			<ul>
+				<li>нажать сочетание клавиш [Ctrl]+[P]</li>
+			</ul>
+			И, если все устраивает, нажать кнопку "Печать", либо:
+			<ul>
+				<li>в появившемся окне нажать "Дополнительные настройки"</li>
+				<li>выбрать поля "Персонализированные"</li>
+				<li>перетянуть мышкой поля так, чтобы карточки нормально распределились по листу <small>(помните, что обычно принтер печатает с полями, если сделать поля слишком маленькие, при печати часть карточек может обрезаться)</small></li>
+			</ul>
+			<p>Рекомендуется указывать размер полей "Минимальные", при Масштабе "Персонализированные" 112%</p>
 			</p>
-			<p>
+			<!--p>
 				Если есть вопросы или предложения - <a style="color: #0288D1" href="https://tentaculus.ru/message?theme=dndspells">пишите</a>.
 			</p>
 			<p>
 				<a style="color: #0288D1"  href="https://github.com/Etignis/DnD_SpellList_eng_rus" target="_blanc">Страница проекта на GitHub.</a>
-			</p>
-		</div-->
-    
+			</p-->
+			<h2>Благодарности</h2>
+				<p>Инструмент основан на <a style="color: #42c1ff; font-weight: bold;" href="https://tentaculus.ru/spells/index.html" target="_blanc">Справочнике заклинаний DnD5 от Dr.Tentaculus</a></p>
+				<p>Исходный код проекта взят <a style="color: #42c1ff; font-weight: bold;"  href="https://github.com/Etignis/DnD_SpellList_eng_rus" target="_blanc">из GitHub.</a></p>
+				<p>Данные по заклинаниям взяты <a style="color: #42c1ff; font-weight: bold;"  href="https://dnd.su/spells/" target="_blanc">с сайта DnD.su</a></p>
+				<p>Отдельное спасибо <strong style="color: #42c1ff;">@Neythalion</strong> за помощь и советы по frontend разработке</p>
+		</div>
+
 		<div class='row spellContainer'>
 		</div>
 	</div>
 	<transition name="fade">
 		<modal-win
-			v-show="bModalWinShow"
-			:content="sModalWinCont"
-			@close="closeModWin"
+				v-show="bModalWinShow"
+				:content="sModalWinCont"
+				@close="closeModWin"
 		>
 		</modal-win>
 	</transition>
 </div>
 
-	<script type='text/javascript' src="./spells/js/vue.js" defer></script>
-  <script type='text/javascript' src='./spells/js/jquery-1.11.3.min.js' defer></script>
-  <script type='text/javascript' src='./js/jquery.mobile.custom.min.js' defer></script>
-  <script type='text/javascript' src='./spells/spells/schoolList.js' defer></script>
-  <script type='text/javascript' src='./spells/spells/sourceList.js?v=0.42' defer></script>
-  <script type='text/javascript' src='./spells/spells/allSpells.js?v=0.61' defer></script>
-  <script type='text/javascript' src='./spells/spells/ClassSpells.js?v=0.53' defer></script>
-  <!-- <script type='text/javascript' src='js/magic.js?v=2.2.9' defer></script> -->
-  <script type='text/javascript' src='./spells/js/controller.js?v=0.47' defer></script>
-  <script type='text/javascript' src="./spells/js/FileSaver.min.js"></script>
-  <!-- <script type='text/javascript' src='js/update.js' defer></script> -->
+<script type='text/javascript' src="./spells/js/vue.js" defer></script>
+<script type='text/javascript' src='./spells/js/jquery-1.11.3.min.js' defer></script>
+<script type='text/javascript' src='./js/jquery.mobile.custom.min.js' defer></script>
+<script type='text/javascript' src='./spells/spells/schoolList.js' defer></script>
+<script type='text/javascript' src='./spells/spells/sourceList.js?v=0.42' defer></script>
+<script type='text/javascript' src='./spells/spells/allSpells.js?v=0.61' defer></script>
+<script type='text/javascript' src='./spells/spells/ClassSpells.js?v=0.53' defer></script>
+<!--script type='text/javascript' src='js/magic.js?v=2.2.9' defer></script-->
+<script type='text/javascript' src='./spells/js/controller.js?v=0.47' defer></script>
+<script type='text/javascript' src="./spells/js/FileSaver.min.js"></script>
+<!-- <script type='text/javascript' src='js/update.js' defer></script> -->
+
 </body>
 </html>
